@@ -1,0 +1,128 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>Tic Tac toe Liu</title>
+    <style>
+        button{
+            height: 150px;
+            width: 150px;
+            font-size: 150px;
+            background-color: lightskyblue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1" onClick="selected(this)"></button>
+<button id="btn2" onClick="selected(this)"></button>
+<button id="btn3" onClick="selected(this)"></button><br/><br/>
+<button id="btn4" onClick="selected(this)"></button>
+<button id="btn5" onClick="selected(this)"></button>
+<button id="btn6" onClick="selected(this)"></button><br/><br/>
+<button id="btn7" onClick="selected(this)"></button>
+<button id="btn8" onClick="selected(this)"></button>
+<button id="btn9" onClick="selected(this)"></button><br/><br/>
+<input type="button" id="btnNewGame" onClick="resetButtons()" value="Rest Button"></input>
+
+<script>
+    var setButtonX = true;
+    function selected(butObj){
+        if (setButtonX == true){
+            butObj.innerHTML = "X";
+            setButtonX = false;
+            checkWin();
+        }else {
+            butObj.innerHTML = "O";
+            setButtonX = true;
+        }
+        butObj.disabled = true;
+        checkWin();
+
+    }
+    function checkWin(){
+        if (("X" === document.getElementById("btn1").innerHTML) &&
+            ("X" === document.getElementById("btn2").innerHTML) &&
+            ("X" === document.getElementById("btn3").innerHTML) ||
+            ("X" === document.getElementById("btn4").innerHTML) &&
+            ("X" === document.getElementById("btn5").innerHTML) &&
+            ("X" === document.getElementById("btn6").innerHTML) ||
+            ("X" === document.getElementById("btn7").innerHTML) &&
+            ("X" === document.getElementById("btn8").innerHTML) &&
+            ("X" === document.getElementById("btn9").innerHTML))
+        {alert("You Won X"); resetButtons();}
+
+        else if(("X" === document.getElementById("btn1").innerHTML) &&
+            ("X" === document.getElementById("btn4").innerHTML) &&
+            ("X" === document.getElementById("btn7").innerHTML) ||
+            ("X" === document.getElementById("btn2").innerHTML) &&
+            ("X" === document.getElementById("btn5").innerHTML) &&
+            ("X" === document.getElementById("btn8").innerHTML) ||
+            ("X" === document.getElementById("btn3").innerHTML) &&
+            ("X" === document.getElementById("btn6").innerHTML) &&
+            ("X" === document.getElementById("btn9").innerHTML))
+        {alert("You Won X"); resetButtons();}
+
+        else if(("X" === document.getElementById("btn1").innerHTML)&&
+            ("X" === document.getElementById("btn5").innerHTML) &&
+            ("X" === document.getElementById("btn9").innerHTML) ||
+            ("X" === document.getElementById("btn3").innerHTML) &&
+            ("X" === document.getElementById("btn5").innerHTML) &&
+            ("X" === document.getElementById("btn7").innerHTML))
+        {alert("You Won X"); resetButtons();}
+
+        else if(("O" === document.getElementById("btn1").innerHTML) &&
+            ("O" === document.getElementById("btn2").innerHTML) &&
+            ("O" === document.getElementById("btn3").innerHTML) ||
+            ("O" === document.getElementById("btn4").innerHTML) &&
+            ("O" === document.getElementById("btn5").innerHTML) &&
+            ("O" === document.getElementById("btn6").innerHTML) ||
+            ("O" === document.getElementById("btn7").innerHTML) &&
+            ("O" === document.getElementById("btn8").innerHTML) &&
+            ("O" === document.getElementById("btn9").innerHTML))
+        {alert("You Won O"); resetButtons();}
+
+        else if(("O" === document.getElementById("btn1").innerHTML) &&
+            ("O" === document.getElementById("btn4").innerHTML) &&
+            ("O" === document.getElementById("btn7").innerHTML) ||
+            ("O" === document.getElementById("btn2").innerHTML) &&
+            ("O" === document.getElementById("btn5").innerHTML) &&
+            ("O" === document.getElementById("btn8").innerHTML) ||
+            ("O" === document.getElementById("btn3").innerHTML) &&
+            ("O" === document.getElementById("btn6").innerHTML) &&
+            ("O" === document.getElementById("btn9").innerHTML))
+        {alert("You Won O"); resetButtons();}
+
+
+        else if(("O" === document.getElementById("btn1").innerHTML) &&
+            ("O" === document.getElementById("btn5").innerHTML) &&
+            ("O" === document.getElementById("btn9").innerHTML) ||
+            ("O" === document.getElementById("btn3").innerHTML) &&
+            ("O" === document.getElementById("btn5").innerHTML) &&
+            ("O" === document.getElementById("btn7").innerHTML))
+        {alert("You Won O"); resetButtons();}
+
+    }
+    function resetButtons() {
+        setButtonX = true;
+        var buttons = document.getElementsByTagName("button");
+        for (var i = 0; i < (buttons.length); i++) {
+            buttons[i].innerHTML = "";
+            buttons[i].disabled = false;
+        }
+    }
+
+    /*
+    function endGame(){
+        var game;
+        if (confirm("Decide to end the game or continue!")) {
+            game = "You decided to end the game";
+        } else {
+            game = "You decided to continue on the game";
+        }
+        document.getElementById("test").innerHTML = game;
+    }*/
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Tic Tac toe Liu</title>
+        <style>
+            button{
+                height: 150px;
+                width: 150px;
+                font-size: 150px;
+                background-color: lightskyblue;
+                text-align: center;
+            }
+            .winClass{
+                background-color: red;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="btn1" onClick="selected(this)"></button>
+        <button id="btn2" onClick="selected(this)"></button>
+        <button id="btn3" onClick="selected(this)"></button><br/><br/>
+        <button id="btn4" onClick="selected(this)"></button>
+        <button id="btn5" onClick="selected(this)"></button>
+        <button id="btn6" onClick="selected(this)"></button><br/><br/>
+        <button id="btn7" onClick="selected(this)"></button>
+        <button id="btn8" onClick="selected(this)"></button>
+        <button id="btn9" onClick="selected(this)"></button><br/><br/>
+        <input type="button" id="btnNewGame" onClick="resetButtons()" value="Rest Button"></input>
+
+        <script>
+            function selected(butObj){
+                butObj.innerHTML = "X";
+                butObj.disabled = true;
+                checkWin("X");
+                AITurn();
+                checkWin("O");
+                drawCheck();
+            }
+
+            //return a random number b/n 1 and 9
+            function AITurn(){
+                for (count = 1; count <= 9; count++){
+                    randInt = Math.floor(Math.random() * 9) + 1;
+                    randBtnObj = document.getElementById("btn" + randInt);
+                    if (randBtnObj.disabled == false) {
+                        randBtnObj.innerHTML = "O";
+                        randBtnObj.disabled = true;
+                    break;
+                    }
+                }
+            }
+
+            function resetButtons() {
+                setButtonX = true;
+                var buttons = document.getElementsByTagName("button");
+                for (var i = 0; i < (buttons.length); i++) {
+                    buttons[i].innerHTML = "";
+                    buttons[i].disabled = false;
+                    buttons[i].removeAttribute("class");
+                }
+            }
+            /*
+            function clear(){
+                document.getElementsByTagName("button")[0].removeAttribute("class");
+                document.getElementsByTagName("button")[1].removeAttribute("class");
+                document.getElementsByTagName("button")[2].removeAttribute("class");
+                document.getElementsByTagName("button")[3].removeAttribute("class");
+                document.getElementsByTagName("button")[4].removeAttribute("class");
+                document.getElementsByTagName("button")[5].removeAttribute("class");
+                document.getElementsByTagName("button")[6].removeAttribute("class");
+                document.getElementsByTagName("button")[7].removeAttribute("class");
+                document.getElementsByTagName("button")[8].removeAttribute("class");
+
+            }*/
+            function checkWin(player) {
+                var btn = document.getElementsByTagName("button");
+                if (player == btn[0].innerHTML && player == btn[1].innerHTML && player == btn[2].innerHTML) {
+                    btn[0].setAttribute("class", "winClass");
+                    btn[1].setAttribute("class", "winClass");
+                    btn[2].setAttribute("class", "winClass");
+                    alert("You won");
+                }else if (player == btn[3].innerHTML && player == btn[4].innerHTML && player == btn[5].innerHTML){
+                    btn[3].setAttribute("class", "winClass");
+                    btn[4].setAttribute("class", "winClass");
+                    btn[5].setAttribute("class", "winClass");
+                    alert("You won");
+                }else if (player == btn[6].innerHTML && player == btn[7].innerHTML && player == btn[8].innerHTML){
+                    btn[6].setAttribute("class", "winClass");
+                    btn[7].setAttribute("class", "winClass");
+                    btn[8].setAttribute("class", "winClass");
+                    alert("You won");
+                }
+            }
+
+
+            function drawCheck() {
+                var btns = document.getElementsByTagName("button");
+                var btn;
+                for (btn in btns){
+                    if(btns[btn].disabled == false){
+                        return;
+                    }
+                }
+                alert("Draw game over")
+            }
+
+
+
+            /*
+            function endGame(){
+                var game;
+                if (confirm("Decide to end the game or continue!")) {
+                    game = "You decided to end the game";
+                } else {
+                    game = "You decided to continue on the game";
+                }
+                document.getElementById("test").innerHTML = game;
+            }*/
+
+        </script>
+    </body>
+</html>
